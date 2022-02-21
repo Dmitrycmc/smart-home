@@ -18,6 +18,7 @@
     <modules>
         <module>admin-app</module>
         <module>api-app</module>
+        <module>database-app</module>
     </modules>
 
     <properties>
