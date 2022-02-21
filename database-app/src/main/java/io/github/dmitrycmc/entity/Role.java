@@ -8,26 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
-public class User {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, unique = true)
-    private String login;
+    private String name;
 
-    @Column(nullable = false)
-    private String password;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     @ManyToMany
     @JoinTable(
-            name = "User_Role",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+            name = "Role_Device",
+            joinColumns = { @JoinColumn(name = "role_id") },
+            inverseJoinColumns = { @JoinColumn(name = "device_id") }
     )
-    private Set<Role> roles;
+    private Set<Device> devices;
 }

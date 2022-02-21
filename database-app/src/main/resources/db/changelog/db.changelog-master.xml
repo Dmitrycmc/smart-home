@@ -14,15 +14,28 @@
     </changeSet>
 
     <include file="01-added-user.xml" relativeToChangelogFile="true"/>
-
     <changeSet id="100" author="dmitrycmc">
-        <tagDatabase tag="v-1.0"/>
+        <tagDatabase tag="v-0.1"/>
     </changeSet>
 
-    <include file="02-added-password.xml" relativeToChangelogFile="true"/>
-
+    <include file="02-added-device.xml" relativeToChangelogFile="true"/>
     <changeSet id="200" author="dmitrycmc">
-        <tagDatabase tag="v-1.1"/>
+        <tagDatabase tag="v-0.2"/>
+    </changeSet>
+
+    <include file="03-added-scenario.xml" relativeToChangelogFile="true"/>
+    <changeSet id="300" author="dmitrycmc">
+        <tagDatabase tag="v-0.3"/>
+    </changeSet>
+
+    <include file="04-added-role.xml" relativeToChangelogFile="true"/>
+    <changeSet id="400" author="dmitrycmc">
+        <tagDatabase tag="v-0.4"/>
+    </changeSet>
+
+    <include file="05-added-role-device.xml" relativeToChangelogFile="true"/>
+    <changeSet id="500" author="dmitrycmc">
+        <tagDatabase tag="v-0.5"/>
     </changeSet>
 
 </databaseChangeLog>
