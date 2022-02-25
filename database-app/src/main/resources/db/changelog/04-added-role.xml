@@ -1,0 +1,32 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="dmitrycmc (generated)" id="1645420986802-1">
+        <createTable tableName="Role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="RolePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dmitrycmc (generated)" id="1645420986802-3">
+        <createTable tableName="User_Role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dmitrycmc (generated)" id="1645420986802-4">
+        <addUniqueConstraint columnNames="name" constraintName="UC_ROLENAME_COL" tableName="Role"/>
+    </changeSet>
+    <changeSet author="dmitrycmc (generated)" id="1645420986802-5">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="User_Role" constraintName="FK7qnwwe579g9frolyprat52l4d" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="Role" validate="true"/>
+    </changeSet>
+    <changeSet author="dmitrycmc (generated)" id="1645420986802-6">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="User_Role" constraintName="FKc52d1rv3ijbpu6lo2v3rej1tx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="User" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
