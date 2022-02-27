@@ -3,6 +3,7 @@ package io.github.dmitrycmc.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "picture")
 public class Picture {
 
     @Id

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Devices</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="device : ${devices}">
+                <th th:text="${device.id}"></th>
+                <td th:text="${device.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

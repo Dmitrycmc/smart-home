@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +26,7 @@ public class Role {
 
     @ManyToMany
     @JoinTable(
-            name = "Role_Device",
+            name = "role_device",
             joinColumns = { @JoinColumn(name = "role_id") },
             inverseJoinColumns = { @JoinColumn(name = "device_id") }
     )

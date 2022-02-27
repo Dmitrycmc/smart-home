@@ -43,4 +43,9 @@
         <tagDatabase tag="v-0.6"/>
     </changeSet>
 
+    <include file="07-renamed-tables.xml" relativeToChangelogFile="true"/>
+    <changeSet id="700" author="dmitrycmc">
+        <tagDatabase tag="v-0.7"/>
+    </changeSet>
+
 </databaseChangeLog>
