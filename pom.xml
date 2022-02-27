@@ -20,6 +20,7 @@
         <module>api-app</module>
         <module>database</module>
         <module>picture-service</module>
+        <module>services</module>
     </modules>
 
     <properties>

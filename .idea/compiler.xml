@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="admin-app" />
         <module name="database" />
+        <module name="services" />
         <module name="database-app" />
         <module name="picture-service" />
         <module name="api-app" />
@@ -25,6 +26,7 @@
       <module name="database" options="-parameters" />
       <module name="database-app" options="-parameters" />
       <module name="picture-service" options="-parameters" />
+      <module name="services" options="-parameters" />
     </option>
   </component>
 </project>
