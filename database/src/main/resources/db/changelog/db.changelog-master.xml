@@ -38,4 +38,9 @@
         <tagDatabase tag="v-0.5"/>
     </changeSet>
 
+    <include file="06-added-picture.xml" relativeToChangelogFile="true"/>
+    <changeSet id="600" author="dmitrycmc">
+        <tagDatabase tag="v-0.6"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -19,6 +19,7 @@
         <module>admin-app</module>
         <module>api-app</module>
         <module>database</module>
+        <module>picture-service</module>
     </modules>
 
     <properties>

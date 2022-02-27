@@ -1,4 +1,4 @@
-package io.github.dmitrycmc.entity;
+package io.github.dmitrycmc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
