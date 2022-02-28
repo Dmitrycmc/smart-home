@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit device</title>
+    <title>Edit user</title>
     <link th:href="@{/common.css}" rel="stylesheet">
     <link th:href="@{/form.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
 </head>
 <body>
-    <form th:action="@{/device}" enctype="multipart/form-data">
-        <input type="hidden" name="id" th:value="${device.id}">
+    <form th:action="@{/user}" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${user.id}">
         <label>
-            Название:
-            <input name="name" th:value="${device.name}" placeholder="Введите название">
+            Логин:
+            <input name="login" th:value="${user.login}" placeholder="Введите логин">
         </label>
         <label>
-            Изображения:
-            <input name="pictures" type="file" accept="image/*" multiple>
+            Пароль:
+            <input name="password" placeholder="Введите пароль">
         </label>
 
         <button type="submit">

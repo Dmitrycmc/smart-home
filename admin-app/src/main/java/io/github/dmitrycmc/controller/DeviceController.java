@@ -59,9 +59,7 @@ public class DeviceController {
     }
 
     @PostMapping
-    public String save(Model model, DeviceDto deviceDto) {
-        System.out.println(deviceDto);
-
+    public String save(DeviceDto deviceDto) {
         Device device = new Device();
 
         device.setId(deviceDto.getId());
