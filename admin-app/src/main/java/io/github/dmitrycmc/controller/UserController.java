@@ -75,7 +75,10 @@ public class UserController {
         user.setId(userDto.getId());
         user.setLogin(userDto.getLogin());
         user.setPassword(encoder.encode(userDto.getPassword()));
-        user.setRoles(roleService.findAllById(Arrays.asList(userDto.getRoleIds())));
+
+        if (userDto.getRoleIds() != null) {
+            user.setRoles(roleService.findAllById(Arrays.asList(userDto.getRoleIds())));
+        }
 
         userService.save(user);
         return "redirect:/user";

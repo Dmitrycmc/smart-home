@@ -16,6 +16,17 @@
             <input name="name" th:value="${role.name}" placeholder="Введите название">
         </label>
 
+        <label>
+            Выберите пользователей:
+            <select name="userIds" multiple>
+                <option th:each="user: ${users}"
+                        th:value="${user.id}"
+                        th:text="${user.login}"
+                        th:selected="${#arrays.contains(role.userIds, user.id)}"
+                ></option>
+            </select>
+        </label>
+
         <button type="submit">
             Create
         </button>
