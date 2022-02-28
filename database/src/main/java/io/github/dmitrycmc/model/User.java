@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @ToString
@@ -43,5 +43,5 @@ public class User {
     )
     @Getter
     @Setter
-    private Set<Role> roles;
+    private List<Role> roles;
 }

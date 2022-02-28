@@ -19,13 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="device : ${devices}">
+            <tr th:each="device: ${devices}">
                 <th th:text="${device.id}"></th>
                 <td th:text="${device.name}"></td>
                 <td>
                     <div class="images-container">
                         <a
-                            th:each="picture : ${device.pictures}"
+                            th:each="picture: ${device.pictures}"
                             th:href="@{'/picture/' + ${picture.id}}"
                             class="image"
                         >

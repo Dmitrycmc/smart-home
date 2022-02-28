@@ -40,12 +40,12 @@ public class Device {
     @OneToMany(mappedBy = "device")
     @Getter
     @Setter
-    private Set<ScenarioDevice> scenarioDeviceSet;
+    private List<ScenarioDevice> scenarioDeviceSet;
 
     @ManyToMany(mappedBy = "devices")
     @Getter
     @Setter
-    private Set<Role> roles;
+    private List<Role> roles;
 
     @Getter
     @Setter

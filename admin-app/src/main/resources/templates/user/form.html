@@ -20,6 +20,17 @@
             <input name="password" placeholder="Введите пароль">
         </label>
 
+        <label>
+            Выберите роли:
+            <select name="roleIds" multiple>
+                <option th:each="role: ${roles}"
+                        th:value="${role.id}"
+                        th:text="${role.name}"
+                        th:selected="${#arrays.contains(user.roleIds, role.id)}"
+                ></option>
+            </select>
+        </label>
+
         <button type="submit">
             Create
         </button>

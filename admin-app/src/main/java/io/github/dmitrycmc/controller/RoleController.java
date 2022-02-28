@@ -41,7 +41,7 @@ public class RoleController {
 
     @GetMapping(path = "/{id}")
     public String edit(Model model, @PathVariable Long id) {
-        Role role = roleService.findById(id).orElseThrow(() -> new NotFoundException("Product not found"));
+        Role role = roleService.findById(id).orElseThrow(() -> new NotFoundException("Role not found"));
         model.addAttribute("role", role);
         return "role/form";
     }

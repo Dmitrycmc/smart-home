@@ -47,7 +47,7 @@ public class DeviceController {
 
     @GetMapping(path = "/{id}")
     public String edit(Model model, @PathVariable Long id) {
-        Device device = deviceService.findById(id).orElseThrow(() -> new NotFoundException("Product not found"));
+        Device device = deviceService.findById(id).orElseThrow(() -> new NotFoundException("Device not found"));
         model.addAttribute("device", device);
         return "device/form";
     }

@@ -29,6 +29,11 @@ public class RoleServiceImpl implements RoleService{
     }
 
     @Override
+    public List<Role> findAllById(List<Long> ids) {
+        return roleDao.findAllById(ids);
+    }
+
+    @Override
     public void deleteById(Long id) {
         roleDao.deleteById(id);
     }

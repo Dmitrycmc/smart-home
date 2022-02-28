@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,7 +34,7 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     @Getter
     @Setter
-    private Set<User> users;
+    private List<User> users;
 
     @ManyToMany
     @JoinTable(
@@ -43,5 +44,5 @@ public class Role {
     )
     @Getter
     @Setter
-    private Set<Device> devices;
+    private List<Device> devices;
 }

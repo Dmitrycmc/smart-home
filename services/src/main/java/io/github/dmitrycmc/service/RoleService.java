@@ -10,6 +10,8 @@ public interface RoleService {
 
     Optional<Role> findById(Long id);
 
+    List<Role> findAllById(List<Long> ids);
+
     void deleteById(Long id);
 
     void save(Role role);
