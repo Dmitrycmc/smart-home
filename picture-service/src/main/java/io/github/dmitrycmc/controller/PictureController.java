@@ -23,7 +23,7 @@ public class PictureController {
     }
 
     @GetMapping("/{pictureId}")
-    public void downloadPicture(@PathVariable("pictureId") long pictureId,
+    public void downloadPicture(@PathVariable long pictureId,
                                 HttpServletResponse response) throws IOException {
         Optional<String> opt = pictureService.getPictureContentType(pictureId);
         if (opt.isPresent()) {

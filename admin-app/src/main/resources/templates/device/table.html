@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Devices</title>
+    <link th:href="@{/common.css}" rel="stylesheet">
+    <link th:href="@{/table.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
 </head>
 <body>
     <table>
@@ -12,6 +15,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Pictures</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +23,28 @@
                 <th th:text="${device.id}"></th>
                 <td th:text="${device.name}"></td>
                 <td>
-                    <div th:each="picture : ${device.pictures}">
-                        <img th:src="@{'/picture/' + ${picture.id}}" width="100px">
+                    <div class="images-container">
+                        <a
+                            th:each="picture : ${device.pictures}"
+                            th:href="@{'/picture/' + ${picture.id}}"
+                            class="image"
+                        >
+                            <img th:src="@{'/picture/' + ${picture.id}}">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div class="buttons-container">
+                        <a th:href="@{/device/{id}(id = ${device.id})}">
+                            <button>
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </a>
+                        <form th:method="DELETE" th:action="@{/device/{id}(id = ${device.id})}">
+                            <button type="submit">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
                     </div>
                 </td>
             </tr>

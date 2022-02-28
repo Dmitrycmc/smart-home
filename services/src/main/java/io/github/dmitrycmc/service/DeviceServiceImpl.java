@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeviceServiceImpl implements DeviceService{
@@ -20,6 +21,16 @@ public class DeviceServiceImpl implements DeviceService{
     @Override
     public List<Device> search() {
         return deviceDao.findAll();
+    }
+
+    @Override
+    public Optional<Device> findById(Long id) {
+        return deviceDao.findById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        deviceDao.deleteById(id);
     }
 
     @Override
