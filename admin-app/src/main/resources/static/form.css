@@ -1,8 +1,11 @@
 form {
-    width: 80vw;
-    min-width: 400px;
+    width: 400px;
     margin: auto;
 
     display: flex;
     flex-direction: column;
+}
+
+label {
+    display: grid;
 }
