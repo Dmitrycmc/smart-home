@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DeviceService {
     public List<Device> search();
+
+    public void save(Device device);
 }

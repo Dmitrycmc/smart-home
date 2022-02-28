@@ -9,18 +9,20 @@
     <table>
         <thead>
             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Name
-                </th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Pictures</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="device : ${devices}">
                 <th th:text="${device.id}"></th>
                 <td th:text="${device.name}"></td>
+                <td>
+                    <div th:each="picture : ${device.pictures}">
+                        <img th:src="@{'/picture/' + ${picture.id}}" width="100px">
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>

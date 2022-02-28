@@ -21,4 +21,9 @@ public class DeviceServiceImpl implements DeviceService{
     public List<Device> search() {
         return deviceDao.findAll();
     }
+
+    @Override
+    public void save(Device device) {
+        deviceDao.save(device);
+    }
 }
