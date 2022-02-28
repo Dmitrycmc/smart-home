@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit user</title>
+    <title>Edit role</title>
     <link th:href="@{/common.css}" rel="stylesheet">
     <link th:href="@{/form.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
 </head>
 <body>
-    <form method="post" th:action="@{/user}" enctype="multipart/form-data">
-        <input type="hidden" name="id" th:value="${user.id}">
+    <form method="post" th:action="@{/role}" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${role.id}">
         <label>
-            Логин:
-            <input name="login" th:value="${user.login}" placeholder="Введите логин">
-        </label>
-        <label>
-            Пароль:
-            <input name="password" placeholder="Введите пароль">
+            Название:
+            <input name="name" th:value="${role.name}" placeholder="Введите название">
         </label>
 
         <button type="submit">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
 </head>
 <body>
-    <form th:action="@{/device}" enctype="multipart/form-data">
+    <form method="post" th:action="@{/device}" enctype="multipart/form-data">
         <input type="hidden" name="id" th:value="${device.id}">
         <label>
             Название:
