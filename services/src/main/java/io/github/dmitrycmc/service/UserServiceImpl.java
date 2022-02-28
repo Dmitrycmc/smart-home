@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> findAllById(List<Long> ids) {
-        return userDao.findAllById(ids);
+    public List<User> findAllByLoginIsIn(List<String> logins) {
+        return userDao.findAllByLoginIsIn(logins);
     }
 
     @Override

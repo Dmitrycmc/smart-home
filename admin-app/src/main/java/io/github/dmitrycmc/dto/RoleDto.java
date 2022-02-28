@@ -16,5 +16,5 @@ public class RoleDto {
 
     @Getter
     @Setter
-    private Long[] userIds;
+    private String[] userLogins = new String[] {};
 }

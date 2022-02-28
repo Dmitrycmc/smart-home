@@ -21,7 +21,7 @@ public class ScenarioDevice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "scenario_id")

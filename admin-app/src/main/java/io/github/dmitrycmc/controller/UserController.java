@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(path = "/user")
@@ -37,13 +38,22 @@ public class UserController {
     @GetMapping
     public String getList(Model model) {
         List<User> users = userService.search();
-        model.addAttribute("users", users);
+        model.addAttribute("users", users.stream().map(user -> {
+            UserDto userDto = new UserDto();
+            userDto.setId(user.getId());
+            userDto.setLogin(user.getLogin());
+            userDto.setRoleNames(user.getRoles().stream().map(Role::getName).toArray(String[]::new));
+            return userDto;
+        }).collect(Collectors.toList()));
         return "user/table";
     }
 
     @GetMapping(path = "/new")
     public String create(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new UserDto());
+
+        List<Role> roles = roleService.search();
+        model.addAttribute("roles", roles);
         return "user/form";
     }
 
@@ -54,7 +64,7 @@ public class UserController {
         userDto.setId(user.getId());
         userDto.setLogin(user.getLogin());
         userDto.setPassword(user.getPassword());
-        userDto.setRoleIds(user.getRoles().stream().map(Role::getId).toArray(Long[]::new));
+        userDto.setRoleNames(user.getRoles().stream().map(Role::getName).toArray(String[]::new));
         model.addAttribute("user", userDto);
 
         List<Role> roles = roleService.search();
@@ -76,8 +86,8 @@ public class UserController {
         user.setLogin(userDto.getLogin());
         user.setPassword(encoder.encode(userDto.getPassword()));
 
-        if (userDto.getRoleIds() != null) {
-            user.setRoles(roleService.findAllById(Arrays.asList(userDto.getRoleIds())));
+        if (userDto.getRoleNames() != null) {
+            user.setRoles(roleService.findAllByNameIsIn(Arrays.asList(userDto.getRoleNames())));
         }
 
         userService.save(user);

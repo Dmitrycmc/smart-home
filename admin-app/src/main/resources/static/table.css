@@ -10,7 +10,7 @@ th, td {
 
 thead tr,
 tbody tr:nth-child(2n) {
-    background: #f0f0f0;
+    background: #3b3f41;
 }
 
 .images-container {

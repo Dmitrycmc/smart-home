@@ -14,6 +14,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Users</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,6 +22,11 @@
             <tr th:each="role: ${roles}">
                 <th th:text="${role.id}"></th>
                 <td th:text="${role.name}"></td>
+                <td>
+                    <ul>
+                        <li th:each="login: ${role.userLogins}" th:text="${login}"></li>
+                    </ul>
+                </td>
                 <td>
                     <div class="buttons-container">
                         <a th:href="@{/role/{id}(id = ${role.id})}">

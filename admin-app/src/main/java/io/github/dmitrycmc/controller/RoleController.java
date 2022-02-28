@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(path = "/role")
@@ -34,13 +35,22 @@ public class RoleController {
     @GetMapping
     public String getList(Model model) {
         List<Role> roles = roleService.search();
-        model.addAttribute("roles", roles);
+        model.addAttribute("roles", roles.stream().map(role -> {
+            RoleDto roleDto = new RoleDto();
+            roleDto.setId(role.getId());
+            roleDto.setName(role.getName());
+            roleDto.setUserLogins(role.getUsers().stream().map(User::getLogin).toArray(String[]::new));
+            return roleDto;
+        }).collect(Collectors.toList()));
         return "role/table";
     }
 
     @GetMapping(path = "/new")
     public String create(Model model) {
-        model.addAttribute("role", new Role());
+        model.addAttribute("role", new RoleDto());
+
+        List<User> users = userService.search();
+        model.addAttribute("users", users);
         return "role/form";
     }
 
@@ -50,7 +60,7 @@ public class RoleController {
         RoleDto roleDto = new RoleDto();
         roleDto.setId(role.getId());
         roleDto.setName(role.getName());
-        roleDto.setUserIds(role.getUsers().stream().map(User::getId).toArray(Long[]::new));
+        roleDto.setUserLogins(role.getUsers().stream().map(User::getLogin).toArray(String[]::new));
         model.addAttribute("role", roleDto);
 
         List<User> users = userService.search();
@@ -71,8 +81,8 @@ public class RoleController {
         role.setId(roleDto.getId());
         role.setName(roleDto.getName());
 
-        if (roleDto.getUserIds() != null) {
-            role.setUsers(userService.findAllById(Arrays.asList(roleDto.getUserIds())));
+        if (roleDto.getUserLogins() != null) {
+            role.setUsers(userService.findAllByLoginIsIn(Arrays.asList(roleDto.getUserLogins())));
         }
 
         roleService.save(role);

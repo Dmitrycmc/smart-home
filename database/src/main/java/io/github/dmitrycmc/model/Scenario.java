@@ -22,7 +22,7 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     @Getter

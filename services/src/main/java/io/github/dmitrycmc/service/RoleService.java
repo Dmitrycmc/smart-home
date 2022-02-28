@@ -10,7 +10,7 @@ public interface RoleService {
 
     Optional<Role> findById(Long id);
 
-    List<Role> findAllById(List<Long> ids);
+    List<Role> findAllByNameIsIn(List<String> names);
 
     void deleteById(Long id);
 

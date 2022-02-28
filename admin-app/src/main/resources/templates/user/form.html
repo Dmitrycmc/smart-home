@@ -22,11 +22,11 @@
 
         <label>
             Выберите роли:
-            <select name="roleIds" multiple>
+            <select name="roleNames" multiple>
                 <option th:each="role: ${roles}"
-                        th:value="${role.id}"
+                        th:value="${role.name}"
                         th:text="${role.name}"
-                        th:selected="${#arrays.contains(user.roleIds, role.id)}"
+                        th:selected="${#arrays.contains(user.roleNames, role.name)}"
                 ></option>
             </select>
         </label>

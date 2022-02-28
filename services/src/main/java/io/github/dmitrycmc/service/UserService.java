@@ -10,7 +10,7 @@ public interface UserService {
 
     Optional<User> findById(Long id);
 
-    List<User> findAllById(List<Long> ids);
+    List<User> findAllByLoginIsIn(List<String> logins);
 
     void deleteById(Long id);
 
