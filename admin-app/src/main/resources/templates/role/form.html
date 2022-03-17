@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit role</title>
+    <link th:href="@{/common.css}" rel="stylesheet">
+    <link th:href="@{/form.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+</head>
+<body>
+    <form method="post" th:action="@{/role}" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${role.id}">
+        <label>
+            Название:
+            <input name="name" th:value="${role.name}" placeholder="Введите название">
+        </label>
+
+        <label>
+            Выберите пользователей:
+            <select name="userLogins" multiple>
+                <option th:each="user: ${users}"
+                        th:value="${user.login}"
+                        th:text="${user.login}"
+                        th:selected="${#arrays.contains(role.userLogins, user.login)}"
+                ></option>
+            </select>
+        </label>
+
+        <button type="submit">
+            Save
+        </button>
+    </form>
+</body>
+</html>

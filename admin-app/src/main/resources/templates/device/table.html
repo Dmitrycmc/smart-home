@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Devices</title>
+    <link th:href="@{/common.css}" rel="stylesheet">
+    <link th:href="@{/table.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+</head>
+<body>
+    <a th:href="@{/device/new}">
+        <button>
+            Добавить
+        </button>
+    </a>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Pictures</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="device: ${devices}">
+                <th th:text="${device.id}"></th>
+                <td th:text="${device.name}"></td>
+                <td>
+                    <div class="images-container">
+                        <a
+                            th:each="picture: ${device.pictures}"
+                            th:href="@{'/picture/' + ${picture.id}}"
+                            class="image"
+                        >
+                            <img th:src="@{'/picture/' + ${picture.id}}">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div class="buttons-container">
+                        <a th:href="@{/device/{id}(id = ${device.id})}">
+                            <button>
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </a>
+                        <form th:method="DELETE" th:action="@{/device/{id}(id = ${device.id})}">
+                            <button type="submit">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

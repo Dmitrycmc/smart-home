@@ -27,7 +27,7 @@
 
         <dependency>
             <groupId>io.github.dmitrycmc</groupId>
-            <artifactId>database-app</artifactId>
+            <artifactId>database</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

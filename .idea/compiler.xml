@@ -2,21 +2,31 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin-app" />
+        <module name="database" />
+        <module name="services" />
         <module name="database-app" />
+        <module name="picture-service" />
         <module name="api-app" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="database-app" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin-app" options="-parameters" />
       <module name="api-app" options="-parameters" />
+      <module name="database" options="-parameters" />
       <module name="database-app" options="-parameters" />
+      <module name="picture-service" options="-parameters" />
+      <module name="services" options="-parameters" />
     </option>
   </component>
 </project>
