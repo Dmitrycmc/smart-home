@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -81,11 +82,25 @@ public class RoleController {
         role.setId(roleDto.getId());
         role.setName(roleDto.getName());
 
-        if (roleDto.getUserLogins() != null) {
-            role.setUsers(userService.findAllByLoginIsIn(Arrays.asList(roleDto.getUserLogins())));
-        }
-
         roleService.save(role);
+
+        userService.search().forEach(u -> {
+            boolean roleTurnedOn = Arrays.asList(roleDto.getUserLogins()).contains(u.getLogin());
+
+            Optional<Role> userRole = u.getRoles().stream().filter(r -> r.getId().equals(role.getId())).findFirst();
+
+            boolean roleWasTurnedOn = userRole.isPresent();
+
+            if (roleWasTurnedOn && !roleTurnedOn) {
+                u.getRoles().remove(userRole.get());
+            }
+            if (!roleWasTurnedOn && roleTurnedOn) {
+                u.getRoles().add(role);
+            }
+
+            userService.save(u);
+        });
+
         return "redirect:/role";
     }
 }
