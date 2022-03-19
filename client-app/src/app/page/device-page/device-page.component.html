@@ -1,1 +1,12 @@
-<p>device-page works!</p>
+<div *ngIf="device">
+  {{device.id}}
+  {{device.name}}
+  <img
+    *ngFor="let pic of device.pictures"
+    src="{{pic}}"
+    class="image"
+  >
+</div>
+<div *ngIf="!device">
+  Loading
+</div>

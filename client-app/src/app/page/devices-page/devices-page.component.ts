@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Device {
-  id: number;
-  name: string;
-  pictures: string[];
-}
+import {Device} from "../../../types/device";
 
 @Component({
   selector: 'app-devices-page',
@@ -13,14 +8,16 @@ interface Device {
 })
 export class DevicesPageComponent implements OnInit {
 
-  constructor() { }
-
-  devices: Device[] = [];
-
-  ngOnInit(): void {
-    fetch('/api/v1/example/devices').then(res => res.json()).then(data => {
+  constructor() {
+    fetch('/api/v1/device').then(res => res.json()).then(data => {
       this.devices = data;
     });
+  }
+
+  devices?: Device[];
+
+  ngOnInit(): void {
+
   }
 
 }
