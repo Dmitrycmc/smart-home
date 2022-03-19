@@ -62,7 +62,7 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public String createPicture(byte[] pictureData, String contentType) {
         String extension = contentType.split("/")[1];
-        byte[] previewData = PictureUtils.resizeImage(pictureData, extension, 160);
+        byte[] previewData = PictureUtils.resizeImage(pictureData, extension, 320);
 
         String filename = UUID.randomUUID().toString();
         try (OutputStream os = Files.newOutputStream(Paths.get(storagePath, filename))) {

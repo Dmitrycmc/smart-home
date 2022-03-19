@@ -1,6 +1,6 @@
 <h1>Devices</h1>
 <ul class="devices">
-  <a *ngFor="let device of devices" class="device" href="/device/{{device.id}}">
+  <a *ngFor="let device of devices" class="device" routerLink="/device/{{device.id}}">
     <li>
       <span class="name">{{device.name}}</span>
       <img
