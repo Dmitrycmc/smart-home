@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DevicesPageComponent } from './page/devices-page/devices-page.component';
 import { DevicePageComponent } from './page/device-page/device-page.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DevicePageComponent } from './page/device-page/device-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

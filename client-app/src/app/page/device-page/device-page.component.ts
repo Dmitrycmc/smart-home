@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Device} from "../../../types/device";
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-device-page',
@@ -11,15 +12,16 @@ export class DevicePageComponent implements OnInit {
   deviceId?: number;
   device?: Device;
 
-  constructor(private activateRoute: ActivatedRoute) {
+  constructor(
+    private deviceService: DeviceService,
+    private activateRoute: ActivatedRoute
+  ) {
     this.deviceId = activateRoute.snapshot.params['id'];
-    fetch(`/api/v1/device/${this.deviceId}`).then(res => res.json()).then(data => {
-      this.device = data;
-    });
   }
 
   ngOnInit(): void {
-
+    this.deviceService.findById(this.deviceId!).subscribe(res => {
+      this.device = res;
+    });
   }
-
 }
