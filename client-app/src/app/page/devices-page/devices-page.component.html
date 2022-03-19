@@ -1,1 +1,14 @@
-<p>devices-page works!</p>
+<h1>Devices</h1>
+<ul class="devices">
+  <a *ngFor="let device of devices" class="device" href="/device/{{device.id}}">
+    <li>
+      <span class="name">{{device.name}}</span>
+      <img
+        *ngIf="device.pictures[0]"
+        src="{{device.pictures[0]}}"
+        class="image"
+      >
+    </li>
+  </a>
+</ul>
+
