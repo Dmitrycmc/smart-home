@@ -30,5 +30,6 @@
   &:disabled {
     background: lighten(#ABC8EFFF, 15%);
     color: lighten(#295C9D, 25%);
+    cursor: default;
   }
 }
