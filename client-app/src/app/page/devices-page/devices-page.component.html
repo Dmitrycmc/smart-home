@@ -1,5 +1,5 @@
 <div class="header">
-  <h1>Devices</h1>
+  <h1>Устройства</h1>
   <div class="filter-container">
     <i *ngIf="!isNameFilterVisible" (click)="showNameFilter()" class="fa-xl fa-solid fa-magnifying-glass search-icon"></i>
     <input #nameFilterRef
@@ -14,12 +14,16 @@
 </div>
 
 <ul class="devices">
+  <div *ngIf="!devices?.content?.length" class="not-found-placeholder">
+    <div class="not-found-placeholder-image"></div>
+    <span class="not-found-placeholder-text">Ничего не найдено</span>
+  </div>
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
       <img
         *ngIf="device.pictures[0]"
-        src="{{device.pictures[0]}}/440"
-        srcset="{{device.pictures[0]}}/220 1x, {{device.pictures[0]}}/440 2x, {{device.pictures[0]}}/660 3x, {{device.pictures[0]}}/880 4x"
+        src="{{device.pictures[0]}}"
+        srcset="{{device.pictures[0]}}/220 1x, {{device.pictures[0]}}/440 2x, {{device.pictures[0]}}/660 3x"
         class="image"
       >
       <div *ngIf="!device.pictures[0]" class="image image-placeholder"></div>

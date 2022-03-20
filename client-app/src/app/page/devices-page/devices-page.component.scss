@@ -63,3 +63,23 @@
     opacity: 1;
   }
 }
+
+.not-found-placeholder {
+  margin: auto;
+
+  .not-found-placeholder-image {
+    background-image: url("./images/home.jpeg");
+    background-size: contain;
+    width: 750px;
+    height: 499px;
+  }
+
+  .not-found-placeholder-text {
+    position: relative;
+    top: -437px;
+
+    text-align: center;
+    display: block;
+    font-size: 30px;
+  }
+}
