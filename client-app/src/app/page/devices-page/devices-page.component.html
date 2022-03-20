@@ -15,11 +15,12 @@
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
       <img
-        *ngIf="device.previews[0]"
-        src="{{device.previews[0]}}"
+        *ngIf="device.pictures[0]"
+        src="{{device.pictures[0]}}"
+        srcset="{{device.pictures[0]}}/220 1x, {{device.pictures[0]}}/440 2x, {{device.pictures[0]}}/660 3x, {{device.pictures[0]}}/880 4x"
         class="image"
       >
-      <div *ngIf="!device.previews[0]" class="image image-placeholder"></div>
+      <div *ngIf="!device.pictures[0]" class="image image-placeholder"></div>
       <span class="name">{{device.name}}</span>
     </li>
   </a>

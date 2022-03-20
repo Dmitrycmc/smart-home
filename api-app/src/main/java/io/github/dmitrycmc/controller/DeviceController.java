@@ -35,7 +35,6 @@ public class DeviceController {
             device.setId(d.getId());
             device.setName(d.getName());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
-            device.setPreviews(d.getPictures().stream().map(p -> "/api/picture/" + p.getId() + "/preview").collect(Collectors.toList()));
             return device;
         });
     }
@@ -47,7 +46,6 @@ public class DeviceController {
             device.setId(d.getId());
             device.setName(d.getName());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
-            device.setPreviews(d.getPictures().stream().map(p -> "/api/picture/" + p.getId() + "/preview").collect(Collectors.toList()));
             return device;
         }).orElseThrow(() -> new RuntimeException("Not Fount"));
     }

@@ -72,7 +72,7 @@ public class DeviceController {
                         device.getPictures().add(new Picture(null,
                                 file.getOriginalFilename(),
                                 file.getContentType(),
-                                pictureService.createPicture(file.getBytes(), file.getContentType()),
+                                pictureService.createPicture(file.getBytes()),
                                 device
                         ));
                     } catch (IOException ex) {
