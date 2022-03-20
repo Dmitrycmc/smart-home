@@ -1,5 +1,16 @@
 <h1>Devices</h1>
-<input type="text" [(ngModel)]="nameFilter" (ngModelChange)="onFilterChange()" />
+<div class="filter-container">
+  <i *ngIf="!isNameFilterVisible" (click)="showNameFilter()" class="fa-xl fa-solid fa-magnifying-glass search-icon"></i>
+  <input
+    class="filter"
+    [class.expanded]="isNameFilterVisible"
+    type="text"
+    placeholder="Название устройства"
+    [(ngModel)]="nameFilter"
+    (ngModelChange)="onFilterChange()"
+  />
+</div>
+<app-pagination [page]="devices" (setPage)="setPage($event)"></app-pagination>
 <ul class="devices">
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
@@ -12,5 +23,4 @@
     </li>
   </a>
 </ul>
-<app-pagination [page]="devices" (setPage)="setPage($event)"></app-pagination>
 

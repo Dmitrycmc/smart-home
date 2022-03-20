@@ -1,22 +1,23 @@
 .devices {
   display: flex;
   flex-wrap: wrap;
-  margin: -16px;
+  padding: 0;
 }
 
 .device {
   width: 160px;
   height: 160px;
   list-style: none;
-  margin: 16px;
+  margin: 8px;
 
-  border: 1px solid gray;
   border-radius: 12px;
   overflow: hidden;
 
   cursor: pointer;
   text-decoration: none;
   color: black;
+
+  box-shadow: 4px 4px 8px 0 black;
 }
 
 .image {
@@ -30,4 +31,28 @@
   text-align: center;
   display: block;
   line-height: 40px;
+}
+
+.filter-container {
+  height: 32px;
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  cursor: pointer;
+}
+
+.filter {
+  height: 100%;
+  width: 0;
+  transition: width 0.5s;
+  opacity: 0;
+
+  &.expanded {
+    width: 240px;
+    opacity: 1;
+  }
 }

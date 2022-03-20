@@ -1,16 +1,16 @@
 .button {
   width: 48px;
-  height: 48px;
+  height: 32px;
   padding-top: 2px;
 
-  border: #295c9d solid 2px;
-  background: rgb(171, 200, 239);
-  color: #295c9d;
+  border: none;
+  background: #ABC8EFFF;
+  color: #295C9D;
 
   transition: background-color 0.2s;
 
   cursor: pointer;
-  border-radius: 100%;
+  border-radius: 4px;
   font-weight: bold;
   font-size: 20px;
 
@@ -19,11 +19,11 @@
   }
 
   &:not(.selected):hover {
-    background: rgb(153, 188, 234);
+    background: darken(#ABC8EFFF, 8%);
   }
 }
 
 .selected {
-  background: #295c9d;
+  background: #295C9D;
   color: white;
 }

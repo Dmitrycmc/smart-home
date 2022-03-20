@@ -14,11 +14,16 @@ export class DevicesPageComponent implements OnInit {
 
   devices?: Page<Device>;
 
+  isNameFilterVisible: boolean = false;
   nameFilter?: string;
 
   currentPage = 0;
 
   constructor(private deviceService: DeviceService) {}
+
+  showNameFilter() {
+    this.isNameFilterVisible = true;
+  }
 
   update() {
     this.deviceService.findAll(this.nameFilter, this.currentPage, 10).subscribe(res => {
@@ -27,12 +32,15 @@ export class DevicesPageComponent implements OnInit {
   }
 
   onFilterChange = debounce(() => {
-    this.setPage(0);
+    this.currentPage = 0;
+    this.update();
   }, 400);
 
   setPage(page: number) {
-    this.currentPage = page;
-    this.update();
+    if (page !== this.currentPage) {
+      this.currentPage = page;
+      this.update();
+    }
   }
 
   ngOnInit(): void {
