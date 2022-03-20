@@ -1,7 +1,7 @@
 <h1>Devices</h1>
 <div class="filter-container">
   <i *ngIf="!isNameFilterVisible" (click)="showNameFilter()" class="fa-xl fa-solid fa-magnifying-glass search-icon"></i>
-  <input
+  <input #nameFilterRef
     class="filter"
     [class.expanded]="isNameFilterVisible"
     type="text"
@@ -14,12 +14,13 @@
 <ul class="devices">
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
-      <span class="name">{{device.name}}</span>
       <img
         *ngIf="device.previews[0]"
         src="{{device.previews[0]}}"
         class="image"
       >
+      <div *ngIf="!device.previews[0]" class="image image-placeholder"></div>
+      <span class="name">{{device.name}}</span>
     </li>
   </a>
 </ul>

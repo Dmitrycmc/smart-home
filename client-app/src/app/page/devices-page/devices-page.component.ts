@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DeviceService} from "../../services/device.service";
 import {Device} from "../../../types/device";
 import debounce from 'lodash/debounce';
-import range from 'lodash/range';
 import {Page} from "../../../types/page";
 
 @Component({
@@ -16,6 +15,7 @@ export class DevicesPageComponent implements OnInit {
 
   isNameFilterVisible: boolean = false;
   nameFilter?: string;
+  @ViewChild('nameFilterRef') filterInput?: ElementRef;
 
   currentPage = 0;
 
@@ -23,6 +23,8 @@ export class DevicesPageComponent implements OnInit {
 
   showNameFilter() {
     this.isNameFilterVisible = true;
+    this.filterInput?.nativeElement.focus();
+    this.filterInput?.nativeElement.select();
   }
 
   update() {

@@ -18,12 +18,17 @@
     margin-left: 4px;
   }
 
-  &:not(.selected):hover {
+  &:not(.selected):not(:disabled):hover {
     background: darken(#ABC8EFFF, 8%);
   }
-}
 
-.selected {
-  background: #295C9D;
-  color: white;
+  &.selected {
+    background: #295C9D;
+    color: white;
+  }
+
+  &:disabled {
+    background: lighten(grayscale(#295C9D), 25%);
+    color: white;
+  }
 }
