@@ -30,7 +30,7 @@ export class DevicesPageComponent implements OnInit {
 
   update() {
     this.fetching = true;
-    this.deviceService.findAll(this.nameFilter, this.currentPage, 10).subscribe(res => {
+    this.deviceService.search(this.nameFilter, this.currentPage, 10).subscribe(res => {
       setTimeout(() => {
           this.devices = res;
           this.fetching = false;

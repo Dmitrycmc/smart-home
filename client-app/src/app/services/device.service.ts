@@ -11,7 +11,7 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
-  public findAll(nameFilter?: string, page?: number, size?: number): Observable<Page<Device>> {
+  public search(nameFilter?: string, page?: number, size?: number): Observable<Page<Device>> {
     let params = new HttpParams();
     if (nameFilter) {
       params = params.set('nameFilter', nameFilter);
