@@ -1,3 +1,9 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .devices {
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +42,6 @@
 
 .filter-container {
   height: 32px;
-  margin-bottom: 16px;
 
   display: flex;
   align-items: center;
@@ -51,7 +56,6 @@
   width: 0;
   transition: width 0.5s;
   opacity: 0;
-  border: none;
   outline: none;
 
   &.expanded {

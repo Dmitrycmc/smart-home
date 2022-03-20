@@ -67,6 +67,15 @@ public class PictureServiceImpl implements PictureService {
     }
 
     private void writePicture(byte[] data, Path filename) {
+        Path directory = Paths.get(storagePath);
+        if (!Files.exists(directory) || !Files.isDirectory(directory)) {
+            try {
+                Files.createDirectory(directory);
+            } catch (IOException ex) {
+                logger.error("Can't create directory", ex);
+                throw new RuntimeException(ex);
+            }
+        }
         try (OutputStream os = Files.newOutputStream(filename)) {
             os.write(data);
         } catch (IOException ex) {

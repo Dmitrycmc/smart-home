@@ -1,22 +1,24 @@
-<h1>Devices</h1>
-<div class="filter-container">
-  <i *ngIf="!isNameFilterVisible" (click)="showNameFilter()" class="fa-xl fa-solid fa-magnifying-glass search-icon"></i>
-  <input #nameFilterRef
-    class="filter"
-    [class.expanded]="isNameFilterVisible"
-    type="text"
-    placeholder="Название устройства"
-    [(ngModel)]="nameFilter"
-    (ngModelChange)="onFilterChange()"
-  />
+<div class="header">
+  <h1>Devices</h1>
+  <div class="filter-container">
+    <i *ngIf="!isNameFilterVisible" (click)="showNameFilter()" class="fa-xl fa-solid fa-magnifying-glass search-icon"></i>
+    <input #nameFilterRef
+           class="filter"
+           [class.expanded]="isNameFilterVisible"
+           type="text"
+           placeholder="Название устройства"
+           [(ngModel)]="nameFilter"
+           (ngModelChange)="onFilterChange()"
+    />
+  </div>
 </div>
-<app-pagination [page]="devices" [disabled]="fetching" (setPage)="setPage($event)" ></app-pagination>
+
 <ul class="devices">
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
       <img
         *ngIf="device.pictures[0]"
-        src="{{device.pictures[0]}}"
+        src="{{device.pictures[0]}}/440"
         srcset="{{device.pictures[0]}}/220 1x, {{device.pictures[0]}}/440 2x, {{device.pictures[0]}}/660 3x, {{device.pictures[0]}}/880 4x"
         class="image"
       >
@@ -25,4 +27,6 @@
     </li>
   </a>
 </ul>
+<app-pagination [page]="devices" [disabled]="fetching" (setPage)="setPage($event)" ></app-pagination>
+
 
