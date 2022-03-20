@@ -10,7 +10,7 @@
     (ngModelChange)="onFilterChange()"
   />
 </div>
-<app-pagination [page]="devices" (setPage)="setPage($event)"></app-pagination>
+<app-pagination [page]="devices" [disabled]="fetching" (setPage)="setPage($event)" ></app-pagination>
 <ul class="devices">
   <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>

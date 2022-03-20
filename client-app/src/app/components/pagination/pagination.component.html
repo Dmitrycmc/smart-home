@@ -1,11 +1,17 @@
 <div *ngIf="page && page.totalPages > 1">
-  <button class="button" (click)="prevPage()" [disabled]="page?.first">
+  <button class="button" (click)="prevPage()" [disabled]="page?.first || disabled">
     <i class="fa-solid fa-angle-left"></i>
   </button>
-  <button class="button" *ngFor="let page of pages" (click)="goToPage(page)" [class.selected]="page === currentPage">
+  <button
+    class="button"
+    *ngFor="let page of pages"
+    (click)="goToPage(page)"
+    [class.selected]="page === currentPage"
+    [disabled]="disabled"
+  >
     {{page}}
   </button>
-  <button class="button" (click)="nextPage()" [disabled]="page?.last">
+  <button class="button" (click)="nextPage()" [disabled]="page?.last || disabled">
     <i class="fa-solid fa-angle-right"></i>
   </button>
 </div>

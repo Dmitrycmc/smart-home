@@ -12,6 +12,7 @@ import {Page} from "../../../types/page";
 export class DevicesPageComponent implements OnInit {
 
   devices?: Page<Device>;
+  fetching: boolean = false;
 
   isNameFilterVisible: boolean = false;
   nameFilter?: string;
@@ -28,8 +29,12 @@ export class DevicesPageComponent implements OnInit {
   }
 
   update() {
+    this.fetching = true;
     this.deviceService.findAll(this.nameFilter, this.currentPage, 10).subscribe(res => {
-      this.devices = res;
+      setTimeout(() => {
+          this.devices = res;
+          this.fetching = false;
+      }, 500);
     });
   }
 

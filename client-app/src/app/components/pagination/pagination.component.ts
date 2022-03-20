@@ -9,6 +9,7 @@ import {Page} from "../../../types/page";
 })
 export class PaginationComponent implements OnInit {
   @Input() page?: Page<unknown>;
+  @Input() disabled?: boolean;
   @Output() setPage = new EventEmitter<number>();
 
   currentPage: number = 0;

@@ -28,7 +28,7 @@
   }
 
   &:disabled {
-    background: lighten(grayscale(#295C9D), 25%);
-    color: white;
+    background: lighten(#ABC8EFFF, 15%);
+    color: lighten(#295C9D, 25%);
   }
 }
