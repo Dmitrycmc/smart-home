@@ -3,6 +3,9 @@ package io.github.dmitrycmc.service;
 import io.github.dmitrycmc.dao.DeviceDao;
 import io.github.dmitrycmc.model.Device;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +22,19 @@ public class DeviceServiceImpl implements DeviceService{
     }
 
     @Override
-    public List<Device> search() {
-        return deviceDao.findAll();
+    public Page<Device> search(
+            Optional<String> nameFilter,
+            Optional<Integer> page,
+            Optional<Integer> size
+    ) {
+        System.out.println(nameFilter);
+        return deviceDao.findAll(
+                Specification.where(nameFilter.<Specification<Device>>map(s -> (root, query, cb) -> cb.like(root.get("name"), "%" + s + "%")).orElse(null)),
+                PageRequest.of(
+                        (page.orElse(0)),
+                        size.orElse(20)
+                )
+        );
     }
 
     @Override

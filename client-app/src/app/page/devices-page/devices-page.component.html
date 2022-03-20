@@ -1,6 +1,7 @@
 <h1>Devices</h1>
 <ul class="devices">
-  <a *ngFor="let device of devices" class="device" routerLink="/device/{{device.id}}">
+  <input type="text" [(ngModel)]="nameFilter" (ngModelChange)="onFilterChange()" />
+  <a *ngFor="let device of devices?.content" class="device" routerLink="/device/{{device.id}}">
     <li>
       <span class="name">{{device.name}}</span>
       <img
@@ -10,5 +11,8 @@
       >
     </li>
   </a>
+  <button (click)="prevPage()" [disabled]="devices?.first">-</button>
+  <button *ngFor="let page of pages" (click)="goToPage(page)" [class.a]="page === currentPage">{{page}}</button>
+  <button (click)="nextPage()" [disabled]="devices?.last">+</button>
 </ul>
 
