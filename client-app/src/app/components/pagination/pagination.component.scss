@@ -1,0 +1,29 @@
+.button {
+  width: 48px;
+  height: 48px;
+  padding-top: 2px;
+
+  border: #295c9d solid 2px;
+  background: rgb(171, 200, 239);
+  color: #295c9d;
+
+  transition: background-color 0.2s;
+
+  cursor: pointer;
+  border-radius: 100%;
+  font-weight: bold;
+  font-size: 20px;
+
+  & + & {
+    margin-left: 4px;
+  }
+
+  &:not(.selected):hover {
+    background: rgb(153, 188, 234);
+  }
+}
+
+.selected {
+  background: #295c9d;
+  color: white;
+}

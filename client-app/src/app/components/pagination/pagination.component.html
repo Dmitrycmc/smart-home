@@ -1,0 +1,11 @@
+<div *ngIf="page && page.totalPages > 1">
+  <button class="button" (click)="prevPage()" [disabled]="page?.first">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <button class="button" *ngFor="let page of pages" (click)="goToPage(page)" [class.selected]="page === currentPage">
+    {{page}}
+  </button>
+  <button class="button" (click)="nextPage()" [disabled]="page?.last">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
