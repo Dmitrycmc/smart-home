@@ -9,6 +9,7 @@ import {Page} from "../../../types/page";
 })
 export class PaginationComponent implements OnInit {
   @Input() page?: Page<unknown>;
+  @Input() pageButtons?: boolean;
   @Input() disabled?: boolean;
   @Output() setPage = new EventEmitter<number>();
 
@@ -19,7 +20,7 @@ export class PaginationComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if ('page' in changes) {
-      this.pages = range(this.page?.totalPages!);
+      this.pages = this.pageButtons ? range(this.page?.totalPages!) : [];
       this.currentPage = this.page?.number!;
     }
   }

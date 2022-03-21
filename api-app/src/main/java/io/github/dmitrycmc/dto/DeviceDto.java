@@ -14,7 +14,15 @@ public class DeviceDto {
 
     @Getter
     @Setter
+    private float x, y;
+
+    @Getter
+    @Setter
     private String name;
+
+    @Getter
+    @Setter
+    private boolean active;
 
     @Getter
     @Setter

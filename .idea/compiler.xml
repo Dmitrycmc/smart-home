@@ -8,11 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin-app" />
-        <module name="database" />
-        <module name="services" />
         <module name="database-app" />
         <module name="picture-service" />
         <module name="api-app" />
+      </profile>
+      <profile name="Annotation profile for smart-home" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="database" />
+        <module name="services" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

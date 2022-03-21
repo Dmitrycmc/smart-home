@@ -22,12 +22,16 @@ public class DeviceServiceImpl implements DeviceService{
     }
 
     @Override
+    public List<Device> findAll() {
+        return deviceDao.findAll();
+    }
+
+    @Override
     public Page<Device> search(
             Optional<String> nameFilter,
             Optional<Integer> page,
             Optional<Integer> size
     ) {
-        System.out.println(nameFilter);
         return deviceDao.findAll(
                 Specification.where(nameFilter.<Specification<Device>>map(s -> (root, query, cb) -> cb.like(root.get("name"), "%" + s + "%")).orElse(null)),
                 PageRequest.of(
@@ -49,6 +53,15 @@ public class DeviceServiceImpl implements DeviceService{
 
     @Override
     public void save(Device device) {
+        deviceDao.save(device);
+    }
+
+    @Override
+    public void toggle(Long id) {
+        Device device =  deviceDao.findById(id).map(d -> {
+            d.setActive(!d.isActive());
+            return d;
+        }).orElseThrow(() -> new RuntimeException("Device with id = " + id + " not found"));
         deviceDao.save(device);
     }
 }

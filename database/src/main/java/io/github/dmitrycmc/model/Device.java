@@ -27,6 +27,11 @@ public class Device {
     @Setter
     private Long id;
 
+    @Column(nullable = false)
+    @Getter
+    @Setter
+    private Float x, y;
+
     @Column(nullable = false, unique = true)
     @Getter
     @Setter

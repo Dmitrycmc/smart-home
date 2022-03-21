@@ -11,6 +11,10 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
+  public getAll(): Observable<Device[]> {
+    return this.http.get<Device[]>('/api/v1/device');
+  }
+
   public search(nameFilter?: string, page?: number, size?: number): Observable<Page<Device>> {
     let params = new HttpParams();
     if (nameFilter) {
@@ -22,21 +26,27 @@ export class DeviceService {
     if (size) {
       params = params.set('size', size);
     }
-    return this.http.get<Page<Device>>('/api/v1/device', {params});
+    return this.http.get<Page<Device>>('/api/v1/device/search', {params});
   }
 
   public findById(id: number): Observable<Device> {
     return this.http.get<Device>(`/api/v1/device/${id}`);
   }
 
-  public openWebSocket() {
+  public openWebSocket(): Observable<string> {
     const ws = new WebSocket("ws://localhost:4200/api/web-socket");
-    ws.onmessage = (m) => {
-      console.log(`[received] ${m.data}`);
-    };
     ws.onopen = () => {
       // @ts-ignore
-      window.send = (m: string) => ws.send(m);
+      window.send = m => {ws.send(m);};
     };
+    return new Observable<string>(subscriber => {
+      ws.onmessage = (m) => {
+        subscriber.next(m.data);
+      };
+    });
+  }
+
+  toggle(id: number): Observable<void> {
+    return this.http.post<void>(`/api/v1/device/${id}/toggle`, null);
   }
 }

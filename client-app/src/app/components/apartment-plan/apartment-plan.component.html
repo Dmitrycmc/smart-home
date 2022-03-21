@@ -1,0 +1,18 @@
+<div class="plan-image" (click)="a($event)">
+  <div
+    *ngFor="let device of devices"
+    [class.inactive]="!device.active"
+    [class.active]="device.active"
+    class="device-outer"
+    [style.left]="device.x - 2 + '%'"
+    [style.top]="device.y - 2 + '%'"
+    (click)="onClick(device.id)"
+    [matTooltip]="device.name"
+  >
+    <div
+      class="device-inner"
+      [style.backgroundImage]="'url(' + device.pictures[0] + ')'"
+    >
+    </div>
+  </div>
+</div>

@@ -8,19 +8,25 @@ import { DevicePageComponent } from './page/device-page/device-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ApartmentPlanComponent } from './components/apartment-plan/apartment-plan.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { DeviceListComponent } from './components/device-list/device-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DevicesPageComponent,
     DevicePageComponent,
-    PaginationComponent
+    PaginationComponent,
+    ApartmentPlanComponent,
+    DeviceListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

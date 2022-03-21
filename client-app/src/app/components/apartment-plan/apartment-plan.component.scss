@@ -1,0 +1,46 @@
+.active {
+  box-shadow: #ffba 0 0 50px 50px;
+
+  & .device-inner {
+    outline: 5px #ffbd solid;
+  }
+}
+
+.inactive {
+  & .device-inner {
+    outline: 5px #000a solid;
+  }
+}
+
+.device-outer {
+  position: absolute;
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+  border-radius: 100%;
+
+  transition: box-shadow 250ms;
+
+  &:hover .device-inner {
+    transform: scale(2);
+  }
+}
+
+.device-inner {
+  background-size: contain;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  transition: outline 250ms, transform 100ms;
+}
+
+.plan-image {
+  position: relative;
+  background-image: url("./images/plan.jpeg");
+
+  height: 800px;
+  width: 800px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+

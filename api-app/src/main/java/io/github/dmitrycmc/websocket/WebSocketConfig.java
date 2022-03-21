@@ -1,5 +1,6 @@
 package io.github.dmitrycmc.websocket;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -13,8 +14,15 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Value("${client.origin}")
     private String clientOrigin;
 
+    private WebSocketHandler webSocketHandler;
+
+    @Autowired
+    public WebSocketConfig(WebSocketHandler webSocketHandler) {
+        this.webSocketHandler = webSocketHandler;
+    }
+
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(new WebSocketHandler(), "/web-socket").setAllowedOrigins(clientOrigin);
+        webSocketHandlerRegistry.addHandler(webSocketHandler, "/web-socket").setAllowedOrigins(clientOrigin);
     }
 }

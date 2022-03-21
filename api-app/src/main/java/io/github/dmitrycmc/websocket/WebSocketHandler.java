@@ -1,7 +1,9 @@
 package io.github.dmitrycmc.websocket;
 
+import io.github.dmitrycmc.websocket.dto.ToggleDeviceDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -11,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class WebSocketHandler extends TextWebSocketHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketHandler.class);
@@ -19,28 +22,24 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        System.out.println("Connected");
-        session.sendMessage(new TextMessage("Connected"));
         sessions.add(session);
         super.afterConnectionEstablished(session);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        System.out.println("Closed");
-        sessions.remove(session);
         super.afterConnectionClosed(session, status);
     }
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        System.out.println("Received");
-        System.out.println(message);
         super.handleTextMessage(session, message);
+    }
 
+    public void post(Long id, boolean active) {
         sessions.forEach(s -> {
             try {
-                s.sendMessage(message);
+                s.sendMessage(new TextMessage(new ToggleDeviceDto(id, active).toJson()));
             } catch (IOException e) {
                 e.printStackTrace();
             }

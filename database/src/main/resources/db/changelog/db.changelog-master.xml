@@ -48,4 +48,9 @@
         <tagDatabase tag="v-0.7"/>
     </changeSet>
 
+    <include file="08-added-device-coordinates.xml" relativeToChangelogFile="true"/>
+    <changeSet id="800" author="dmitrycmc">
+        <tagDatabase tag="v-0.8"/>
+    </changeSet>
+
 </databaseChangeLog>
