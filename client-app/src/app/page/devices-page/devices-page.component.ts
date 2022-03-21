@@ -50,6 +50,7 @@ export class DevicesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+    this.deviceService.openWebSocket();
   }
 
 }

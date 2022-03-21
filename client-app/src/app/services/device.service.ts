@@ -28,4 +28,15 @@ export class DeviceService {
   public findById(id: number): Observable<Device> {
     return this.http.get<Device>(`/api/v1/device/${id}`);
   }
+
+  public openWebSocket() {
+    const ws = new WebSocket("ws://localhost:4200/api/web-socket");
+    ws.onmessage = (m) => {
+      console.log(`[received] ${m.data}`);
+    };
+    ws.onopen = () => {
+      // @ts-ignore
+      window.send = (m: string) => ws.send(m);
+    };
+  }
 }
