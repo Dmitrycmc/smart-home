@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "update-statistics": "scripts/statistics.sh admin-app && scripts/statistics.sh api-app && scripts/statistics.sh client-app && scripts/statistics.sh database && scripts/statistics.sh picture-service && scripts/statistics.sh services && scripts/statistics.sh common"
+  },
+  "devDependencies": {
+    "cloc": "^2.9.0",
+    "husky": "^7.0.0"
+  }
+}

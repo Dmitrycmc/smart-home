@@ -32,6 +32,8 @@ build/
 .vscode/
 
 ### image storage ###
+node_modules
 images
-client-app/node_modules
 client-app/.angular
+files.txt
+ignored.txt
