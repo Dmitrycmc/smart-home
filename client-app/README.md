@@ -26,16 +26,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-cloc|github.com/AlDanial/cloc v 1.92  T=0.02 s (1328.4 files/s, 30945.7 lines/s)
+cloc|github.com/AlDanial/cloc v 1.92  T=0.03 s (1214.4 files/s, 31955.9 lines/s)
 --- | ---
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-TypeScript|14|44|62|191
-JSON|5|0|0|187
-HTML|4|1|0|39
+TypeScript|19|68|62|326
+JSON|5|0|0|188
+SCSS|4|23|1|101
+HTML|5|3|0|78
 JavaScript|1|1|6|37
-SCSS|2|5|1|28
 Markdown|1|13|0|14
 --------|--------|--------|--------|--------
-SUM:|27|64|69|496
+SUM:|35|108|69|744

@@ -4,12 +4,14 @@ import io.github.dmitrycmc.dto.DeviceDto;
 import io.github.dmitrycmc.service.DeviceService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Tag(name = "Device", description = "Service for devices ")
@@ -25,15 +27,16 @@ public class DeviceController {
     }
 
     @GetMapping("")
-    public List<DeviceDto> getDevices() {
-        return deviceService.search().stream().map(d -> {
+    public Page<DeviceDto> getDevices(@RequestParam Optional<Integer> page,
+                                      @RequestParam Optional<Integer> size,
+                                      @RequestParam Optional<String> nameFilter) {
+        return deviceService.search(nameFilter, page, size).map(d -> {
             DeviceDto device = new DeviceDto();
             device.setId(d.getId());
             device.setName(d.getName());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
-            device.setPreviews(d.getPictures().stream().map(p -> "/api/picture/" + p.getId() + "/preview").collect(Collectors.toList()));
             return device;
-        }).collect(Collectors.toList());
+        });
     }
 
     @GetMapping("{id}")
@@ -43,7 +46,6 @@ public class DeviceController {
             device.setId(d.getId());
             device.setName(d.getName());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
-            device.setPreviews(d.getPictures().stream().map(p -> "/api/picture/" + p.getId() + "/preview").collect(Collectors.toList()));
             return device;
         }).orElseThrow(() -> new RuntimeException("Not Fount"));
     }

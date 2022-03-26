@@ -1,12 +1,12 @@
 
 
-cloc|github.com/AlDanial/cloc v 1.92  T=0.01 s (528.6 files/s, 18942.5 lines/s)
+cloc|github.com/AlDanial/cloc v 1.92  T=0.02 s (382.9 files/s, 15697.8 lines/s)
 --- | ---
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-Java|4|30|0|149
+Java|4|35|0|175
 Maven|1|7|0|28
 Markdown|1|1|0|0
 --------|--------|--------|--------|--------
-SUM:|6|38|0|177
+SUM:|6|43|0|203

@@ -1,17 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .devices {
   display: flex;
   flex-wrap: wrap;
-  margin: -16px;
+  padding: 0;
 }
 
 .device {
-  width: 160px;
-  height: 160px;
   list-style: none;
-  margin: 16px;
+  margin: 8px;
 
-  border: 1px solid gray;
-  border-radius: 12px;
   overflow: hidden;
 
   cursor: pointer;
@@ -21,13 +23,63 @@
 
 .image {
   display: block;
-  width: 160px;
-  height: 120px;
-  object-fit: cover;
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.image-placeholder {
+  background-image: url("./images/placeholder.png");
+  background-size: cover;
 }
 
 .name {
   text-align: center;
   display: block;
   line-height: 40px;
+}
+
+.filter-container {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  cursor: pointer;
+}
+
+.filter {
+  height: 100%;
+  width: 0;
+  transition: width 0.5s;
+  opacity: 0;
+  outline: none;
+
+  &.expanded {
+    width: 240px;
+    opacity: 1;
+  }
+}
+
+.not-found-placeholder {
+  margin: auto;
+
+  .not-found-placeholder-image {
+    background-image: url("./images/home.jpeg");
+    background-size: contain;
+    width: 750px;
+    height: 499px;
+  }
+
+  .not-found-placeholder-text {
+    position: relative;
+    top: -437px;
+
+    text-align: center;
+    display: block;
+    font-size: 30px;
+  }
 }
