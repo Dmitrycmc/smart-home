@@ -7,7 +7,7 @@ public interface PictureService {
     Optional<String> getPictureContentType(long id);
 
     Optional<byte[]> getPictureDataById(long id);
-    Optional<byte[]> getPictureDataById(long id, boolean preview);
+    Optional<byte[]> getPictureDataById(long id, int size);
 
-    String createPicture(byte[] pictureData, String contentType);
+    String createPicture(byte[] pictureData);
 }

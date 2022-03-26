@@ -19,8 +19,4 @@ public class DeviceDto {
     @Getter
     @Setter
     private List<String> pictures;
-
-    @Getter
-    @Setter
-    private List<String> previews;
 }

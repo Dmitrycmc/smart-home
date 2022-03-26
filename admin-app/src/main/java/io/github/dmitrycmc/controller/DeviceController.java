@@ -7,6 +7,7 @@ import io.github.dmitrycmc.model.Picture;
 import io.github.dmitrycmc.service.DeviceService;
 import io.github.dmitrycmc.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 @RequestMapping(path = "/device")
@@ -34,7 +34,7 @@ public class DeviceController {
 
     @GetMapping
     public String getList(Model model) {
-        List<Device> devices = deviceService.search();
+        Page<Device> devices = deviceService.search(java.util.Optional.empty(), java.util.Optional.empty(), java.util.Optional.empty());
         model.addAttribute("devices", devices);
         return "device/table";
     }
@@ -72,7 +72,7 @@ public class DeviceController {
                         device.getPictures().add(new Picture(null,
                                 file.getOriginalFilename(),
                                 file.getContentType(),
-                                pictureService.createPicture(file.getBytes(), file.getContentType()),
+                                pictureService.createPicture(file.getBytes()),
                                 device
                         ));
                     } catch (IOException ex) {

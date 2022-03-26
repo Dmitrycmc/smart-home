@@ -23,7 +23,7 @@ public class PictureController {
     }
 
     @GetMapping("/{pictureId}")
-    public void downloadPicture(@PathVariable long pictureId,
+    public void getPicture(@PathVariable long pictureId,
                                 HttpServletResponse response) throws IOException {
         Optional<String> opt = pictureService.getPictureContentType(pictureId);
         if (opt.isPresent()) {
@@ -34,13 +34,16 @@ public class PictureController {
         }
     }
 
-    @GetMapping("/{pictureId}/preview")
-    public void downloadPicturePreview(@PathVariable long pictureId,
-                                HttpServletResponse response) throws IOException {
+    @GetMapping("/{pictureId}/{size}")
+    public void getResizedPicture(
+            @PathVariable long pictureId,
+            @PathVariable int size,
+            HttpServletResponse response
+    ) throws IOException {
         Optional<String> opt = pictureService.getPictureContentType(pictureId);
         if (opt.isPresent()) {
             response.setContentType(opt.get());
-            response.getOutputStream().write(pictureService.getPictureDataById(pictureId, true).get());
+            response.getOutputStream().write(pictureService.getPictureDataById(pictureId, size).get());
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

@@ -1,0 +1,35 @@
+.button {
+  width: 48px;
+  height: 32px;
+  padding-top: 2px;
+
+  border: none;
+  background: #ABC8EFFF;
+  color: #295C9D;
+
+  transition: background-color 0.2s;
+
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 20px;
+
+  & + & {
+    margin-left: 4px;
+  }
+
+  &:not(.selected):not(:disabled):hover {
+    background: darken(#ABC8EFFF, 8%);
+  }
+
+  &.selected {
+    background: #295C9D;
+    color: white;
+  }
+
+  &:disabled {
+    background: lighten(#ABC8EFFF, 15%);
+    color: lighten(#295C9D, 25%);
+    cursor: default;
+  }
+}

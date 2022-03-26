@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {DeviceService} from "../../services/device.service";
 import {Device} from "../../../types/device";
+import debounce from 'lodash/debounce';
+import {Page} from "../../../types/page";
 
 @Component({
   selector: 'app-devices-page',
@@ -8,16 +11,45 @@ import {Device} from "../../../types/device";
 })
 export class DevicesPageComponent implements OnInit {
 
-  constructor() {
-    fetch('/api/v1/device').then(res => res.json()).then(data => {
-      this.devices = data;
+  devices?: Page<Device>;
+  fetching: boolean = false;
+
+  isNameFilterVisible: boolean = false;
+  nameFilter?: string;
+  @ViewChild('nameFilterRef') filterInput?: ElementRef;
+
+  currentPage = 0;
+
+  constructor(private deviceService: DeviceService) {}
+
+  showNameFilter() {
+    this.isNameFilterVisible = true;
+    this.filterInput?.nativeElement.focus();
+    this.filterInput?.nativeElement.select();
+  }
+
+  update() {
+    this.fetching = true;
+    this.deviceService.search(this.nameFilter, this.currentPage, 8).subscribe(res => {
+        this.devices = res;
+        this.fetching = false;
     });
   }
 
-  devices?: Device[];
+  onFilterChange = debounce(() => {
+    this.currentPage = 0;
+    this.update();
+  }, 400);
+
+  setPage(page: number) {
+    if (page !== this.currentPage) {
+      this.currentPage = page;
+      this.update();
+    }
+  }
 
   ngOnInit(): void {
-
+    this.update();
   }
 
 }
