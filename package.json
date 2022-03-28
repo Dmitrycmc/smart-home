@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "update-statistics": "scripts/statistics.sh admin-app && scripts/statistics.sh api-app && scripts/statistics.sh client-app && scripts/statistics.sh database && scripts/statistics.sh picture-service && scripts/statistics.sh services && scripts/statistics.sh common"
+    "update-statistics": "scripts/statistics.sh admin-app && scripts/statistics.sh api-app && scripts/statistics.sh client-app && scripts/statistics.sh database && scripts/statistics.sh picture-service && scripts/statistics.sh services && scripts/statistics.sh common",
+    "dev:client": "npm start --prefix=client-app"
   },
   "devDependencies": {
     "cloc": "^2.9.0",

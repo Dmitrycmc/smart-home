@@ -21,5 +21,5 @@ public interface DeviceService {
 
     void save(Device device);
 
-    void toggle(Long id);
+    void setActive(Long id, boolean active);
 }

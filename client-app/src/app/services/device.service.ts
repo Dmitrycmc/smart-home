@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { webSocket } from "rxjs/webSocket";
 import {Device} from "../../types/device";
 import {Page} from "../../types/page";
+import {ActionType, ToggleDevice, WebSocketDto} from "../../types/web-socket-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -33,16 +35,27 @@ export class DeviceService {
     return this.http.get<Device>(`/api/v1/device/${id}`);
   }
 
-  public openWebSocket(): Observable<string> {
-    const ws = new WebSocket("ws://localhost:4200/api/web-socket");
-    ws.onopen = () => {
-      // @ts-ignore
-      window.send = m => {ws.send(m);};
-    };
-    return new Observable<string>(subscriber => {
-      ws.onmessage = (m) => {
-        subscriber.next(m.data);
-      };
+  public openWebSocket(toggleButtonEvent: Observable<ToggleDevice>): Observable<ToggleDevice> {
+    const ws = webSocket("ws://localhost:4200/api/web-socket");
+    toggleButtonEvent.subscribe(({id, active}) => {
+
+      // todo: reconnect
+
+      ws.next({
+        actionType: ActionType.TOGGLE_DEVICE,
+        id,
+        active
+      });
+    });
+
+    return new Observable<ToggleDevice>(subscriber => {
+      ws.subscribe(msg => {
+        const webSocketDto = msg as WebSocketDto;
+        if (webSocketDto.actionType !== ActionType.TOGGLE_DEVICE) {
+          return;
+        }
+        return subscriber.next(msg as ToggleDevice)
+      });
     });
   }
 

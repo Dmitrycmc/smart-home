@@ -21,7 +21,7 @@
       <img
         *ngIf="device.pictures[0]"
         src="{{device.pictures[0]}}"
-        srcset="{{device.pictures[0]}}/220 1x, {{device.pictures[0]}}/440 2x, {{device.pictures[0]}}/660 3x"
+        srcset="{{device.pictures[0]}}/64 1x, {{device.pictures[0]}}/128 2x, {{device.pictures[0]}}/192 3x"
         class="image"
       >
       <div *ngIf="!device.pictures[0]" class="image image-placeholder"></div>

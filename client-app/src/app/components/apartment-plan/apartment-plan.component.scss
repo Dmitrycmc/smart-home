@@ -14,8 +14,8 @@
 
 .device-outer {
   position: absolute;
-  width: 4%;
-  height: 4%;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   border-radius: 100%;
 
@@ -36,11 +36,10 @@
 
 .plan-image {
   position: relative;
-  background-image: url("./images/plan.jpeg");
-
-  height: 800px;
+  margin: auto;
   width: 800px;
+  height: 661px;
+  background: black url("./images/plan.png") no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 

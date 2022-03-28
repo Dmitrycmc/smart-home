@@ -6,7 +6,7 @@ export interface WebSocketDto {
   actionType: ActionType
 }
 
-export interface ToggleDevice extends WebSocketDto {
+export interface ToggleDevice {
   id: number;
   active: boolean;
 }

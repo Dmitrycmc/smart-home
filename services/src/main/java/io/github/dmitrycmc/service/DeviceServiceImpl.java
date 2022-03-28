@@ -57,9 +57,9 @@ public class DeviceServiceImpl implements DeviceService{
     }
 
     @Override
-    public void toggle(Long id) {
+    public void setActive(Long id, boolean active) {
         Device device =  deviceDao.findById(id).map(d -> {
-            d.setActive(!d.isActive());
+            d.setActive(active);
             return d;
         }).orElseThrow(() -> new RuntimeException("Device with id = " + id + " not found"));
         deviceDao.save(device);
