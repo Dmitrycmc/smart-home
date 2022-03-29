@@ -58,8 +58,4 @@ export class DeviceService {
       });
     });
   }
-
-  toggle(id: number): Observable<void> {
-    return this.http.post<void>(`/api/v1/device/${id}/toggle`, null);
-  }
 }
