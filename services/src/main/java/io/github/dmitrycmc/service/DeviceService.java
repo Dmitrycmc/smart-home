@@ -3,9 +3,12 @@ package io.github.dmitrycmc.service;
 import io.github.dmitrycmc.model.Device;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DeviceService {
+    List<Device> findAll();
+
     Page<Device> search(
             Optional<String> nameFilter,
             Optional<Integer> page,
@@ -17,4 +20,6 @@ public interface DeviceService {
     void deleteById(Long id);
 
     void save(Device device);
+
+    void setActive(Long id, boolean active);
 }

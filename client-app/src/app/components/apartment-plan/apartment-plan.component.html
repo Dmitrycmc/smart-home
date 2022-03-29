@@ -1,0 +1,18 @@
+<div class="plan-image" (click)="logFlatCoordinates($event)">
+  <div
+    *ngFor="let device of devices"
+    [class.inactive]="!device.active"
+    [class.active]="device.active"
+    class="device-outer"
+    [style.left]="'calc(' + device.x + '% - 20px)'"
+    [style.top]="'calc(' + device.y + '% - 20px)'"
+    (click)="onClick(device.id)"
+    [matTooltip]="device.name"
+  >
+    <img
+      class="device-inner"
+      src="url({{device.pictures[0]}})"
+      srcset="{{device.pictures[0]}}/80 1x, {{device.pictures[0]}}/160 2x, {{device.pictures[0]}}/240 3x"
+    />
+  </div>
+</div>

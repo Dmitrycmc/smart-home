@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.github.dmitrycmc</groupId>
     <artifactId>admin-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>admin-app</name>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @RequestMapping("v1/device")
 public class DeviceController {
 
-    DeviceService deviceService;
+    private final DeviceService deviceService;
 
     @Autowired
     public DeviceController(DeviceService deviceService) {
@@ -27,13 +28,30 @@ public class DeviceController {
     }
 
     @GetMapping("")
-    public Page<DeviceDto> getDevices(@RequestParam Optional<Integer> page,
+    public List<DeviceDto> getDevices() {
+        return deviceService.findAll().stream().map(d -> {
+            DeviceDto device = new DeviceDto();
+            device.setId(d.getId());
+            device.setX(d.getX());
+            device.setY(d.getY());
+            device.setName(d.getName());
+            device.setActive(d.isActive());
+            device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
+            return device;
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("search")
+    public Page<DeviceDto> searchDevices(@RequestParam Optional<Integer> page,
                                       @RequestParam Optional<Integer> size,
                                       @RequestParam Optional<String> nameFilter) {
         return deviceService.search(nameFilter, page, size).map(d -> {
             DeviceDto device = new DeviceDto();
             device.setId(d.getId());
+            device.setX(d.getX());
+            device.setY(d.getY());
             device.setName(d.getName());
+            device.setActive(d.isActive());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
             return device;
         });
@@ -44,7 +62,10 @@ public class DeviceController {
         return deviceService.findById(id).map(d -> {
             DeviceDto device = new DeviceDto();
             device.setId(d.getId());
+            device.setX(d.getX());
+            device.setY(d.getY());
             device.setName(d.getName());
+            device.setActive(d.isActive());
             device.setPictures(d.getPictures().stream().map(p -> "/api/picture/" + p.getId()).collect(Collectors.toList()));
             return device;
         }).orElseThrow(() -> new RuntimeException("Not Fount"));

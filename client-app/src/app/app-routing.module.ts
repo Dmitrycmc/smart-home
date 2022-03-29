@@ -4,8 +4,7 @@ import {DevicesPageComponent} from "./page/devices-page/devices-page.component";
 import {DevicePageComponent} from "./page/device-page/device-page.component";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'devices'},
-  {path: 'devices', component: DevicesPageComponent},
+  {path: '', component: DevicesPageComponent},
   {path: 'device/:id', component: DevicePageComponent},
 ];
 
