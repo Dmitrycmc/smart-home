@@ -2,6 +2,9 @@ package io.github.dmitrycmc.service;
 
 import io.github.dmitrycmc.dao.DeviceDao;
 import io.github.dmitrycmc.model.Device;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,20 +13,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DeviceServiceImpl implements DeviceService{
 
     private final DeviceDao deviceDao;
+    private final RedissonClient redissonClient;
 
     @Autowired
-    public DeviceServiceImpl(DeviceDao deviceDao) {
+    public DeviceServiceImpl(DeviceDao deviceDao, RedissonClient redissonClient) {
         this.deviceDao = deviceDao;
+        this.redissonClient = redissonClient;
     }
 
     @Override
     public List<Device> findAll() {
-        return deviceDao.findAll();
+        return deviceDao.findAll().stream().map(d -> {
+            Boolean active = (Boolean) redissonClient.getMap("deviceIdToActive").get(d.getId());
+            d.setActive(active != null && active);
+            return d;
+        }).collect(Collectors.toList());
     }
 
     @Override
@@ -58,10 +68,6 @@ public class DeviceServiceImpl implements DeviceService{
 
     @Override
     public void setActive(Long id, boolean active) {
-        Device device =  deviceDao.findById(id).map(d -> {
-            d.setActive(active);
-            return d;
-        }).orElseThrow(() -> new RuntimeException("Device with id = " + id + " not found"));
-        deviceDao.save(device);
+        redissonClient.getMap("deviceIdToActive").put(id, active);
     }
 }
