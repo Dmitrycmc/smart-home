@@ -29,14 +29,11 @@ public class SecurityConfiguration {
             http
                     .authorizeRequests()
                     .antMatchers("/**/*.css", "/**/*.js").permitAll()
-                    .antMatchers("/device/**").permitAll()
+                    .antMatchers("/**").authenticated()
                     .and()
                     .formLogin()
                     //.loginPage("/login")
-                    .defaultSuccessUrl("/user")
-                    .and()
-                    .exceptionHandling()
-                    .accessDeniedPage("/access_denied");
+                    .defaultSuccessUrl("/user", true);
         }
     }
 }
