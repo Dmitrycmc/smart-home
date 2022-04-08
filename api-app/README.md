@@ -1,6 +1,6 @@
 
 
-cloc|github.com/AlDanial/cloc v 1.92  T=0.02 s (688.1 files/s, 24869.8 lines/s)
+cloc|github.com/AlDanial/cloc v 1.92  T=0.02 s (572.2 files/s, 20680.1 lines/s)
 --- | ---
 
 Language|files|blank|comment|code
