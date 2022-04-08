@@ -12,14 +12,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration {
     @Autowired
-    public void authConfig(AuthenticationManagerBuilder auth, PasswordEncoder encoder, UserDetailsService userDetailService) throws Exception {
+    public void authConfig(AuthenticationManagerBuilder auth,
+                           PasswordEncoder encoder,
+                           UserDetailsService userDetailService) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("root")
                 .password(encoder.encode("root"))
                 .roles("SUPER_ADMIN");
 
         auth.userDetailsService(userDetailService);
-
     }
 
     @Configuration
@@ -29,14 +30,11 @@ public class SecurityConfiguration {
             http
                     .authorizeRequests()
                     .antMatchers("/**/*.css", "/**/*.js").permitAll()
-                    .antMatchers("/device/**").permitAll()
+                    .antMatchers("/**").authenticated()
                     .and()
                     .formLogin()
                     //.loginPage("/login")
-                    .defaultSuccessUrl("/user")
-                    .and()
-                    .exceptionHandling()
-                    .accessDeniedPage("/access_denied");
+                    .defaultSuccessUrl("/user", true);
         }
     }
 }
