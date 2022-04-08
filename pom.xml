@@ -22,6 +22,7 @@
         <module>picture-service</module>
         <module>services</module>
         <module>spring-cloud-config</module>
+        <module>spring-cloud-discovery</module>
     </modules>
 
     <dependencyManagement>
