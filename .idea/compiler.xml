@@ -8,16 +8,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="database" />
-        <module name="picture-service" />
         <module name="api-app" />
-        <module name="spring-cloud-config" />
+        <module name="spring-cloud-config-server" />
         <module name="admin-app" />
-        <module name="services" />
         <module name="database-app" />
+      </profile>
+      <profile name="Annotation profile for smart-home" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="services" />
+        <module name="picture-service" />
+        <module name="spring-cloud-config" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="database-app" target="11" />
+      <module name="spring-cloud-config-server" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +36,7 @@
       <module name="picture-service" options="-parameters" />
       <module name="services" options="-parameters" />
       <module name="spring-cloud-config" options="-parameters" />
+      <module name="spring-cloud-config-server" options="-parameters" />
     </option>
   </component>
 </project>
