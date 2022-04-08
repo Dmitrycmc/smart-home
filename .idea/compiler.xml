@@ -9,9 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="database" />
         <module name="picture-service" />
-        <module name="spring-cloud-discovery" />
         <module name="api-app" />
         <module name="spring-cloud-config" />
+        <module name="spring-cloud-discovery" />
         <module name="spring-cloud-config-server" />
         <module name="admin-app" />
         <module name="spring-cloud-gateway" />

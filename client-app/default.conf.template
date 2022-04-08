@@ -1,0 +1,23 @@
+server {
+    listen 80;
+    server_name localhost;
+    index index.html;
+    root  /usr/share/nginx/html;
+
+    location / {
+        try_files $uri $uri/ /index.html =404;
+    }
+
+    location /admin {
+        proxy_pass http://admin-app:8080/admin;
+        proxy_set_header Host $http_host;
+    }
+
+    location /api {
+        proxy_pass http://api-app:8080/api;
+    }
+
+    location /api/picture {
+        proxy_pass http://picture-service:8080/api/picture;
+    }
+}

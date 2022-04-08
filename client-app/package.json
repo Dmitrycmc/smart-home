@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:ng": "ng build",
+    "build:docker": "docker build . -t smart-home/client-app",
+    "build": "npm run build:ng && npm run build:docker",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
