@@ -11,6 +11,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: picture-service
+          uri: lb://PICTURE-SERVICE
+          predicates:
+            - Path=/api/picture/**
         - id: api-app
           uri: lb://API-APP
           predicates:
