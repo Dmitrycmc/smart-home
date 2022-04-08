@@ -7,16 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="admin-app" />
         <module name="database" />
+        <module name="picture-service" />
+        <module name="spring-cloud-discovery" />
+        <module name="api-app" />
+        <module name="spring-cloud-config" />
+        <module name="spring-cloud-config-server" />
+        <module name="admin-app" />
+        <module name="spring-cloud-gateway" />
         <module name="services" />
         <module name="database-app" />
-        <module name="picture-service" />
-        <module name="api-app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="database-app" target="11" />
+      <module name="spring-cloud-config-server" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,6 +32,10 @@
       <module name="database-app" options="-parameters" />
       <module name="picture-service" options="-parameters" />
       <module name="services" options="-parameters" />
+      <module name="spring-cloud-config" options="-parameters" />
+      <module name="spring-cloud-config-server" options="-parameters" />
+      <module name="spring-cloud-discovery" options="-parameters" />
+      <module name="spring-cloud-gateway" options="-parameters" />
     </option>
   </component>
 </project>

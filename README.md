@@ -32,23 +32,23 @@ Web application for the administration and management of devices and scenarios.
 
 <img width="1046" alt="Screen Shot 2022-03-22 at 08 45 21" src="https://user-images.githubusercontent.com/38041284/159416729-841cbd4a-a99e-4a2c-a35a-ecaf56f3e2aa.png">
 
-cloc|github.com/AlDanial/cloc v 1.92  T=0.11 s (1165.5 files/s, 37400.6 lines/s)
+cloc|github.com/AlDanial/cloc v 1.92  T=0.22 s (619.4 files/s, 19134.9 lines/s)
 --- | ---
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-Java|44|291|4|1329
+Java|50|315|7|1384
+Maven|9|66|5|471
 TypeScript|24|99|65|463
 HTML|13|6|0|366
-Maven|6|45|0|329
 XML|9|11|0|229
 JSON|5|0|0|190
 SCSS|5|31|1|150
 Markdown|7|26|0|88
 Bourne Shell|2|13|0|48
+YAML|3|3|6|45
 CSS|3|8|0|42
+Properties|6|9|0|41
 JavaScript|1|1|6|37
-Properties|3|9|0|33
-YAML|1|3|6|18
 --------|--------|--------|--------|--------
-SUM:|123|543|82|3322
+SUM:|137|588|90|3554
