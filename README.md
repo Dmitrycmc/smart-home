@@ -5,6 +5,7 @@ Soft for the administration and management of a smart home
 - Java
 - MySQL
 - Hibernate
+- Liquibase
 - Spring Boot
 - Spring REST
 - Web Socket
